@@ -3,7 +3,6 @@ package ru.job4j.list;
 import java.util.*;
 
 public class SimpleArrayList<T> implements List<T> {
-
     private T[] container;
 
     private int size;
