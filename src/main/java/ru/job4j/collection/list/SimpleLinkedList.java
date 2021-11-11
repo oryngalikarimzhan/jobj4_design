@@ -31,8 +31,7 @@ public class SimpleLinkedList<E> implements List<E> {
         last = newNode;
         if (l == null) {
             first = newNode;
-        }
-        else {
+        } else {
             l.next = newNode;
         }
         size++;
