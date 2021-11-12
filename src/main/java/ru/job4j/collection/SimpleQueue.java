@@ -9,22 +9,18 @@ public class SimpleQueue<T> {
     private int countOut = 0;
 
     public T poll() {
-        if (in == null) {
+        if (countIn == 0) {
             throw new NoSuchElementException();
         }
-        countOut = countIn;
-        while (countOut > 0) {
-            out.push(in.pop());
-            countOut--;
+        if (countOut == 0) {
+            while (countIn > 0) {
+                out.push(in.pop());
+                countIn--;
+                countOut++;
+            }
         }
-        T deleted = out.pop();
-        while (countIn - 1 > 0) {
-            in.push(out.pop());
-            countIn--;
-            countOut++;
-        }
-        countIn = countOut;
-        return deleted;
+        countOut--;
+        return out.pop();
     }
 
     public void push(T value) {
