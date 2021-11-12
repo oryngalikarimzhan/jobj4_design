@@ -35,8 +35,6 @@ public class ListUtils {
         while (i.hasNext()) {
             if (filter.test(i.next())) {
                 i.remove();
-            } else {
-                i.next();
             }
         }
     }
@@ -46,8 +44,6 @@ public class ListUtils {
         while (i.hasNext()) {
             if (filter.test(i.next())) {
                 i.set(value);
-            } else {
-                i.next();
             }
         }
     }
@@ -61,7 +57,6 @@ public class ListUtils {
                 if (x.next() == y.next()) {
                     x.remove();
                 }
-                y.next();
             }
             x.next();
         }
