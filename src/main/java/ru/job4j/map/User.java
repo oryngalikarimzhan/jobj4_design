@@ -15,9 +15,9 @@ public class User {
 
     public static void main(String[] args) {
         User user1 = new User("Bob", 2,
-                new GregorianCalendar(1996, 2, 9));
+                new GregorianCalendar(1996, Calendar.MARCH, 9));
         User user2 = new User("Bob", 2,
-                new GregorianCalendar(1996, 2, 9));
+                new GregorianCalendar(1996, Calendar.MARCH, 9));
 
         Map<User, Object> users = new HashMap<>();
         users.put(user1, new Object());
