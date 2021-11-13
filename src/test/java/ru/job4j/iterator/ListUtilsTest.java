@@ -2,13 +2,10 @@ package ru.job4j.iterator;
 
 import static org.hamcrest.Matchers.is;
 import org.junit.Test;
-import ru.job4j.generics.Predator;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
-
 import static org.junit.Assert.assertThat;
 
 public class ListUtilsTest {
@@ -30,6 +27,13 @@ public class ListUtilsTest {
     public void whenAddAfterLast() {
         List<Integer> input = new ArrayList<>(Arrays.asList(0, 1, 2));
         ListUtils.addAfter(input, 2, 3);
+        assertThat(input, is(Arrays.asList(0, 1, 2, 3)));
+    }
+
+    @Test
+    public void whenAddAfter() {
+        List<Integer> input = new ArrayList<>(Arrays.asList(0, 1, 3));
+        ListUtils.addAfter(input, 1, 2);
         assertThat(input, is(Arrays.asList(0, 1, 2, 3)));
     }
 
@@ -56,7 +60,4 @@ public class ListUtilsTest {
         ListUtils.removeAll(input, controlList);
         assertThat(input, is(List.of(2, 3)));
     }
-
-
-
 }
