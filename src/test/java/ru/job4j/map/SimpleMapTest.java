@@ -42,6 +42,5 @@ public class SimpleMapTest {
         assertFalse(simpleMap.remove(2));
         simpleMap.put(2, 1);
         assertTrue(simpleMap.remove(2));
-
     }
 }
