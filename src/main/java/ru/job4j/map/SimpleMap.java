@@ -47,6 +47,8 @@ public class SimpleMap<K, V> implements Map<K, V> {
         while (i < capacity / 2) {
             if (temp[i] != null) {
                 put(temp[i].key, temp[i].value);
+                modCount--;
+                count--;
             }
             i++;
         }
