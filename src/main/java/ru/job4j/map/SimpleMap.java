@@ -44,8 +44,10 @@ public class SimpleMap<K, V> implements Map<K, V> {
         MapEntry<K, V>[] temp = table;
         table = new MapEntry[capacity];
         int i = 0;
-        while (temp[i] != null) {
-            put(temp[i].key, temp[i].value);
+        while (i < capacity / 2) {
+            if (temp[i] != null) {
+                put(temp[i].key, temp[i].value);
+            }
             i++;
         }
     }
