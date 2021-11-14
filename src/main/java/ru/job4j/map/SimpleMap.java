@@ -43,10 +43,10 @@ public class SimpleMap<K, V> implements Map<K, V> {
         capacity = capacity * 2;
         MapEntry<K, V>[] temp = table;
         table = new MapEntry[capacity];
-        for (int i = 0; i < capacity / 2; i++) {
-            if (temp[i] != null) {
-                put(temp[i].key, temp[i].value);
-            }
+        int i = 0;
+        while (temp[i] != null) {
+            put(temp[i].key, temp[i].value);
+            i++;
         }
     }
 
@@ -85,7 +85,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                while (table[counter] == null) {
+                while (counter < capacity && table[counter] == null) {
                     counter++;
                 }
                 return counter < capacity;
