@@ -45,7 +45,7 @@ public class SimpleTree<E> implements Tree<E> {
         return rsl;
     }
 
-//    private Optional<Node> findByPredicate(Predicate<Node<E>> condition) {
-//
-//    }
+    /*private Optional<Node> findByPredicate(Predicate<Node<E>> condition) {
+
+    }*/
 }
