@@ -14,34 +14,14 @@ public class Info {
         this.deleted = deleted;
     }
 
-    public int getAdded() {
-        return added;
-    }
-
-    public void setAdded(int added) {
-        this.added = added;
-    }
-
-    public int getChanged() {
-        return changed;
-    }
-
-    public void setChanged(int changed) {
-        this.changed = changed;
-    }
-
-    public int getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(int deleted) {
-        this.deleted = deleted;
-    }
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Info info = (Info) o;
         return added == info.added && changed == info.changed && deleted == info.deleted;
     }
@@ -53,10 +33,10 @@ public class Info {
 
     @Override
     public String toString() {
-        return "Info{" +
-                "added=" + added +
-                ", changed=" + changed +
-                ", deleted=" + deleted +
-                '}';
+        return "Info{"
+                + "added=" + added
+                + ", changed=" + changed
+                + ", deleted=" + deleted
+                + '}';
     }
 }
