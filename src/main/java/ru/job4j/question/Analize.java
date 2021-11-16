@@ -1,36 +1,40 @@
 package ru.job4j.question;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Analize {
 
     public static Info diff(Set<User> previous, Set<User> current) {
+        int addedCount = 0;
         int changedCount = 0;
         int deletedCount = 0;
-        int sameCount = 0;
-        Iterator<User> prevIter = previous.iterator();
-        Iterator<User> currIter = current.iterator();
-        while (prevIter.hasNext()) {
-            User pre = prevIter.next();
-            if (current.contains(pre)) {
-                sameCount++;
-            } else {
-                int checker = changedCount;
-                while (currIter.hasNext() && changedCount == checker) {
-                    User cur = currIter.next();
-                    if (pre.getId() == cur.getId()) {
-                        changedCount++;
-                    }
-                }
-                if (checker == changedCount) {
-                    deletedCount++;
-                }
+
+        Map<Integer, String> previousMap = new HashMap<>();
+        Map<Integer, String> currentMap = new HashMap<>();
+
+        for (User prev : previous) {
+            previousMap.put(prev.getId(), prev.getName());
+        }
+
+        for (User curr : current) {
+            currentMap.put(curr.getId(), curr.getName());
+        }
+
+        for (Integer key : currentMap.keySet()) {
+            if (!previousMap.containsKey(key)) {
+                addedCount++;
             }
         }
-        int addedCount = current.size() - sameCount - changedCount;
+
+        for (Integer key : previousMap.keySet()) {
+            if (!currentMap.containsKey(key)) {
+                deletedCount++;
+            } else if (!currentMap.get(key).equals(previousMap.get(key))) {
+                changedCount++;
+            }
+        }
         return new Info(addedCount, changedCount, deletedCount);
     }
 }
