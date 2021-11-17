@@ -3,7 +3,7 @@ package ru.job4j.io;
 import java.io.*;
 
 public class Analizy {
-    public void unavailable(String source, String target) {
+    public void unavailable(String source, String target) throws IOException {
         StringBuilder log = new StringBuilder();
         try (BufferedReader in =
                      new BufferedReader(
@@ -24,15 +24,11 @@ public class Analizy {
                         log = new StringBuilder();
                     }
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Analizy test = new Analizy();
         test.unavailable("./data/server.log", "./data/unavailable.csv");
     }
