@@ -19,7 +19,9 @@ public class Config {
     public void load() {
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
             read.lines()
-                    .filter(s -> !s.startsWith("#") && s.length() != 0)
+                    .filter(s -> !s.startsWith("#")
+                            && s.contains("=")
+                            && !s.contains("=="))
                     .peek(s -> {
                         if (s.startsWith("=") || s.endsWith("=")) {
                             throw new IllegalArgumentException();
