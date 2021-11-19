@@ -19,7 +19,12 @@ public class Config {
     public void load() {
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
             read.lines()
-                    .filter(s -> !s.startsWith("#") && !"".equals(s) && !s.startsWith("="))
+                    .filter(s -> !s.startsWith("#") && s.length() != 0)
+                    .peek(s -> {
+                        if (s.startsWith("=") || s.endsWith("=")) {
+                            throw new IllegalArgumentException();
+                        }
+                    })
                     .map(s -> s.split("="))
                     .forEach(str -> values.put(str[0], str[1]));
         } catch (IOException e) {
