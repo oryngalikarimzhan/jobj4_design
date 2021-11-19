@@ -5,7 +5,7 @@ import java.io.File;
 public class Dir {
     public static void main(String[] args) {
         if (args.length == 0) {
-            throw new IllegalArgumentException("Root folder is null. Usage java -jar dir.jar ROOT_FOLDER.");
+            throw new IllegalArgumentException("Root folder is null. Usage java -jar target/dir.jar . ");
         }
         File file = new File(args[0]);
         if (!file.exists()) {
