@@ -19,10 +19,9 @@ public class Config {
     public void load() {
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
             read.lines()
-                    .filter(s -> !s.startsWith("#")
-                            && s.split("=").length == 2
-                            && !"".equals(s.split("=")[0]))
-                    .forEach(s -> values.put(s.split("=")[0], s.split("=")[1]));
+                    .filter(s -> !s.startsWith("#") && !"".equals(s) && !s.startsWith("="))
+                    .map(s -> s.split("="))
+                    .forEach(str -> values.put(str[0], str[1]));
         } catch (IOException e) {
             e.printStackTrace();
         }
