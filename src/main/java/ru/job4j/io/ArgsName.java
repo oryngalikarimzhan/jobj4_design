@@ -15,7 +15,11 @@ public class ArgsName {
     private void parse(String[] args) {
         Arrays.stream(args)
                 .peek(s -> {
-                    if (s.startsWith("=") || s.endsWith("=")) {
+                    if (s.startsWith("=")
+                            || s.endsWith("=")
+                            || !s.startsWith("-")
+                            || s.startsWith("-=")
+                            || s.startsWith("==")) {
                         throw new IllegalArgumentException();
                     }
                 })
