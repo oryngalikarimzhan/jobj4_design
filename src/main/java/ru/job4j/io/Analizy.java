@@ -21,7 +21,7 @@ public class Analizy {
                             && (split[0].equals("200") || split[0].equals("300"))) {
                         log.append(";").append(split[1]).append(";");
                         out.println(log);
-                        log = new StringBuilder();
+                        log.setLength(0);
                     }
                 }
             }
