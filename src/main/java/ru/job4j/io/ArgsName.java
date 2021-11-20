@@ -20,7 +20,7 @@ public class ArgsName {
                             || !s.startsWith("-")
                             || s.startsWith("-=")
                             || s.startsWith("==")) {
-                        throw new IllegalArgumentException();
+                        throw new IllegalArgumentException("Does not match the pattern -key=value");
                     }
                 })
                 .filter(s -> s.contains("="))
