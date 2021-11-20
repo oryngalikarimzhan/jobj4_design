@@ -1,6 +1,8 @@
 package ru.job4j.io;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -25,11 +27,11 @@ public class ConsoleChat {
         String botFraze;
         String userFraze;
         String condition = CONTINUE;
-        while (!condition.equals(OUT)) {
-            if (condition.equals(CONTINUE)) {
+        while (!OUT.equals(condition)) {
+            if (CONTINUE.equals(condition)) {
                 userFraze = userIn.nextLine();
                 chat.add(userFraze);
-                if (userFraze.equals(OUT) || userFraze.equals(STOP)) {
+                if (OUT.equals(userFraze) || STOP.equals(userFraze)) {
                     condition = userFraze;
                 } else {
                     Random rand = new Random();
@@ -40,13 +42,13 @@ public class ConsoleChat {
             } else {
                 userFraze = userIn.nextLine();
                 chat.add(userFraze);
-                if (userFraze.equals(CONTINUE)) {
+                if (CONTINUE.equals(userFraze)) {
                     condition = userFraze;
                     Random rand = new Random();
                     botFraze = readPhrases().get(rand.nextInt(readPhrases().size()));
                     System.out.println(botFraze);
                     chat.add(botFraze);
-                } else if (userFraze.equals(OUT)) {
+                } else if (OUT.equals(userFraze)) {
                     condition = userFraze;
                 }
 
@@ -57,7 +59,7 @@ public class ConsoleChat {
 
     private List<String> readPhrases() {
         List<String> listOfAnswers = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(botAnswers))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(botAnswers, StandardCharsets.UTF_8))) {
             br.lines().forEach(listOfAnswers::add);
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,7 +68,7 @@ public class ConsoleChat {
     }
 
     private void saveLog(List<String> log) {
-        try (PrintWriter pw = new PrintWriter(new FileWriter(path, true))) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(path, StandardCharsets.UTF_8, true))) {
             log.forEach(pw::println);
         } catch (IOException e) {
             e.printStackTrace();
