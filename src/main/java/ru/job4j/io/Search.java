@@ -11,7 +11,7 @@ public class Search {
     public static void main(String[] args) throws IOException {
         String[] searchingArgs = validate(args);
         Path start = Paths.get(searchingArgs[0]);
-        search(start, p -> p.toFile().getName().endsWith(searchingArgs[1]))
+        search(start, p -> !p.toFile().getName().endsWith(searchingArgs[1]))
                 .forEach(System.out::println);
     }
 
