@@ -4,7 +4,6 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class CSVReader {
     public static void handle(ArgsName argsName) throws Exception {
@@ -33,29 +32,25 @@ public class CSVReader {
                  a = titleScanner.next();
                  l = titleScanner.next();
                  e = titleScanner.next();
-
-            }
-        }
-
-        List<String> name = new ArrayList<>();
-        List<String> age = new ArrayList<>();
-        List<String> lastName = new ArrayList<>();
-        List<String> eduction = new ArrayList<>();
-
-        try (var scanner = new Scanner(path).useDelimiter(delimiter)) {
-            while (scanner.hasNext()) {
-                name.add(scanner.next());
-                age.add(scanner.next());
-                lastName.add(scanner.next());
-                eduction.add(scanner.next());
             }
         }
 
         Map<String, List<String>> map = new HashMap<>();
-        map.put(n, name);
-        map.put(a, age);
-        map.put(l, lastName);
-        map.put(e, eduction);
+        map.put(n, new ArrayList<>());
+        map.put(a, new ArrayList<>());
+        map.put(l, new ArrayList<>());
+        map.put(e, new ArrayList<>());
+
+
+        try (var scanner = new Scanner(path).useDelimiter(delimiter)) {
+            while (scanner.hasNext()) {
+                map.get(n).add(scanner.next());
+                map.get(a).add(scanner.next());
+                map.get(l).add(scanner.next());
+                map.get(e).add(scanner.next());
+            }
+        }
+
 
         StringBuilder rsl = new StringBuilder();
         int i = 0;
