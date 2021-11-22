@@ -39,4 +39,30 @@ public class CSVReaderTest {
         Assert.assertEquals(expected, Files.readString(target.toPath()));
     }
 
+    @Test
+    public void whenFilterThreeColumns() throws Exception {
+        String data = String.join(
+                System.lineSeparator(),
+                "name;age;last_name;education;course",
+                "Tom;20;Smith;Bachelor;1",
+                "Jack;25;Johnson;Undergraduate;2",
+                "William;30;Brown;Secondary special;3"
+        );
+        File file = temporaryFolder.newFile("source.csv");
+        File target = temporaryFolder.newFile("target.csv");
+        ArgsName argsName = ArgsName.of(new String[]{
+                "-path=" + file.getAbsolutePath(), "-delimiter=[;\n]", "-out=" + target.getAbsolutePath(), "-filter=name,age,course"
+        });
+        Files.writeString(file.toPath(), data);
+        String expected = String.join(
+                System.lineSeparator(),
+                "name;age;course",
+                "Tom;20;1",
+                "Jack;25;2",
+                "William;30;3"
+        ).concat(System.lineSeparator());
+        CSVReader.handle(argsName);
+        Assert.assertEquals(expected, Files.readString(target.toPath()));
+    }
+
 }

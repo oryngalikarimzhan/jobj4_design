@@ -11,53 +11,48 @@ public class CSVReader {
         Path target = Paths.get(argsName.get("out"));
         String delimiter = argsName.get("delimiter");
 
-        String fil1 = "";
-        String fil2 = "";
-
+        List<String> filterList = new ArrayList<>();
         try (var filterScanner = new Scanner(argsName.get("filter")).useDelimiter(",")) {
             while (filterScanner.hasNext()) {
-                fil1 = filterScanner.next();
-                fil2 = filterScanner.next();
+                filterList.add(filterScanner.next());
             }
         }
 
-        String n = "";
-        String a = "";
-        String l = "";
-        String e = "";
-
-        try (var titleScanner = new Scanner(path).useDelimiter(delimiter)) {
-            if (titleScanner.hasNextLine()) {
-                 n = titleScanner.next();
-                 a = titleScanner.next();
-                 l = titleScanner.next();
-                 e = titleScanner.next();
+        List<String> titlesList = new ArrayList<>();
+        try (var titleLineScanner = new Scanner(path)) {
+            if (titleLineScanner.hasNextLine()) {
+                String titlesLine = titleLineScanner.nextLine();
+                var titlesScanner = new Scanner(titlesLine).useDelimiter(delimiter);
+                while (titlesScanner.hasNext()) {
+                    titlesList.add(titlesScanner.next());
+                }
             }
         }
 
         Map<String, List<String>> map = new HashMap<>();
-        map.put(n, new ArrayList<>());
-        map.put(a, new ArrayList<>());
-        map.put(l, new ArrayList<>());
-        map.put(e, new ArrayList<>());
+        for (String title : titlesList) {
+            map.put(title, new ArrayList<>());
+        }
 
-
+        int counter = 0;
         try (var scanner = new Scanner(path).useDelimiter(delimiter)) {
             while (scanner.hasNext()) {
-                map.get(n).add(scanner.next());
-                map.get(a).add(scanner.next());
-                map.get(l).add(scanner.next());
-                map.get(e).add(scanner.next());
+                counter++;
+                for (String title : titlesList) {
+                    map.get(title).add(scanner.next());
+                }
             }
         }
 
-
         StringBuilder rsl = new StringBuilder();
-        int i = 0;
-        while (i < map.size()) {
-            rsl.append(map.get(fil1).get(i)).append(";").append(map.get(fil2).get(i)).append("\n");
-            i++;
+        for (int i = 0; i < counter; i++) {
+            for (String filter : filterList) {
+                rsl.append(map.get(filter).get(i)).append(";");
+            }
+            rsl.delete(rsl.length() - 1, rsl.length());
+            rsl.append("\n");
         }
+
         try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(target.toFile()))) {
             out.write(rsl.toString().getBytes());
         }
