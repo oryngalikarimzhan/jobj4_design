@@ -44,14 +44,14 @@ public class CSVReader {
                 }
             }
         }
-
+        List<String> strings = new ArrayList<>();
         StringBuilder rsl = new StringBuilder();
         for (int i = 0; i < counter; i++) {
             for (String filter : filterList) {
-                rsl.append(map.get(filter).get(i)).append(";");
+                strings.add(map.get(filter).get(i));
             }
-            rsl.delete(rsl.length() - 1, rsl.length());
-            rsl.append("\n");
+            rsl.append(String.join(";", strings)).append("\n");
+            strings.clear();
         }
 
         try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(target.toFile()))) {
