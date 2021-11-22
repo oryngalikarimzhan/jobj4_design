@@ -44,14 +44,14 @@ public class CSVReader {
                 }
             }
         }
-        List<String> strings = new ArrayList<>();
+
         StringBuilder rsl = new StringBuilder();
         for (int i = 0; i < counter; i++) {
+            List<String> strings = new ArrayList<>();
             for (String filter : filterList) {
                 strings.add(map.get(filter).get(i));
             }
             rsl.append(String.join(";", strings)).append("\n");
-            strings.clear();
         }
 
         try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(target.toFile()))) {
