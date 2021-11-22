@@ -7,6 +7,7 @@ import java.util.*;
 
 public class CSVReader {
     public static void handle(ArgsName argsName) throws Exception {
+
         Path path = Paths.get(argsName.get("path"));
         Path target = Paths.get(argsName.get("out"));
         String delimiter = argsName.get("delimiter");
@@ -71,7 +72,6 @@ public class CSVReader {
         }
         return args;
     }
-
 
     public static void main(String[] args) throws Exception {
         String[] arg = validate(args);
