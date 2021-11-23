@@ -1,0 +1,9 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<ereader waterproof="true" wirelesscharging="false" screensize="8">
+    <brand brandname="onyx boox" model="nove 3 color" founded="2006"/>
+    <readingformats>
+        <readingformat>pdf</readingformat>
+        <readingformat>word</readingformat>
+        <readingformat>xml</readingformat>
+    </readingformats>
+</ereader>
