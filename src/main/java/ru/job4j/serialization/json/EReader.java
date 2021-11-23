@@ -1,13 +1,26 @@
 package ru.job4j.serialization.json;
 
+import javax.xml.bind.annotation.*;
 import java.util.Arrays;
 
+@XmlRootElement(name = "ereader")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class EReader {
-    private final boolean waterProof;
-    private final boolean wirelessCharging;
-    private final int screenSize;
-    private final Brand brand;
-    private final String[] readingFormats;
+    @XmlAttribute
+    private boolean waterProof;
+    @XmlAttribute
+    private boolean wirelessCharging;
+    @XmlAttribute
+    private int screenSize;
+
+    private Brand brand;
+
+    @XmlElementWrapper(name = "readingformats")
+    @XmlElement(name = "readingformat")
+    private String[] readingFormats;
+
+    public EReader() {
+    }
 
     public EReader(boolean waterProof, boolean wirelessCharging, int screenSize, Brand brand, String[] readingFormats) {
         this.waterProof = waterProof;

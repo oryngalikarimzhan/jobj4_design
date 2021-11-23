@@ -1,9 +1,19 @@
 package ru.job4j.serialization.json;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "brand")
 public class Brand {
-    private final String brandName;
-    private final String model;
-    private final String founded;
+    @XmlAttribute
+    private String brandName;
+    @XmlAttribute
+    private String model;
+    @XmlAttribute
+    private String founded;
+
+    public Brand() {
+    }
 
     public Brand(String brandName, String model, String founded) {
         this.brandName = brandName;

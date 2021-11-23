@@ -2,31 +2,36 @@ package ru.job4j.serialization.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import ru.job4j.io.serialization.xml.Person;
+
+
+import javax.xml.bind.JAXBContext;
+
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.StringReader;
+import java.io.StringWriter;
 
 public class Info {
-    public static void main(String[] args) {
-        final EReader reader = new EReader(true, false, 8,
+    public static void main(String[] args) throws Exception {
+        final EReader ereader = new EReader(true, false, 8,
                 new Brand("Onyx Boox", "Nova 3 Color", "2006"),
                 new String[] {"pdf", "word", "xml"});
+        JAXBContext context = JAXBContext.newInstance(EReader.class);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-        final Gson gson = new GsonBuilder().create();
-        System.out.println(gson.toJson(reader));
+        String xml = "";
+        try (StringWriter writer = new StringWriter()) {
+            marshaller.marshal(ereader, writer);
+            xml = writer.getBuffer().toString();
+            System.out.println(xml);
+        }
 
-        final String readerJson =
-                "{"
-                        + "\"waterProof\":false,"
-                        + "\"wirelessCharging\":false,"
-                        + "\"screenSize\":8,"
-                        + "\"brand\":"
-                        + "{"
-                        + "\"brandName\":\"PocketBook\","
-                        + "\"model\":\"Inkpad 3 Color\","
-                        + "\"founded\":\"2007\""
-                        + "},"
-                        + "\"readingFormats\":"
-                        + "[\"pdf\",\"word\",\"xml\"]"
-                        + "}";
-        final EReader readerMod = gson.fromJson(readerJson, EReader.class);
-        System.out.println(readerMod);
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        try (StringReader reader = new StringReader(xml)) {
+            EReader result = (EReader) unmarshaller.unmarshal(reader);
+            System.out.println(result);
+        }
     }
 }
