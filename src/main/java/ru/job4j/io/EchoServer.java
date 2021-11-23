@@ -15,10 +15,10 @@ public class EchoServer {
                              new InputStreamReader(socket.getInputStream()))) {
                     out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     for (String str = in.readLine(); str != null && !str.isEmpty(); str = in.readLine()) {
-                        if (str.substring(9, 14).toLowerCase(Locale.ROOT).equals("hello")) {
+                        if ("hello".equals(str.substring(9, 14).toLowerCase(Locale.ROOT))) {
                             out.write("hello".getBytes());
                             break;
-                        } else if (str.substring(9, 13).toLowerCase(Locale.ROOT).equals("exit")) {
+                        } else if ("exit".equals(str.substring(9, 13).toLowerCase(Locale.ROOT))) {
                             server.close();
                             break;
                         } else {
