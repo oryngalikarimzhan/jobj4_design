@@ -1,12 +1,6 @@
 package ru.job4j.serialization.json;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import ru.job4j.io.serialization.xml.Person;
-
-
 import javax.xml.bind.JAXBContext;
-
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.StringReader;
