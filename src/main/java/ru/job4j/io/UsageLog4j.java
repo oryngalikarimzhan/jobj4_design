@@ -17,8 +17,8 @@ public class UsageLog4j {
         double doubleNum = 1000000;
         char charSymbol = 'm';
         boolean isMillion = true;
-        LOG.debug("string : {}, int : {}, byte : {}, short : {}, " +
-                        "long : {}, float : {}, double : {}, char : {}, boolean : {}",
+        LOG.debug("string : {}, int : {}, byte : {}, short : {}, "
+                        + "long : {}, float : {}, double : {}, char : {}, boolean : {}",
                 stringNum, intNum, byteNum, shortNum, longNum, floatNum, doubleNum, charSymbol, isMillion);
     }
 }
