@@ -1,0 +1,3 @@
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./404.txt
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./log.txt
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./data/log.txt
