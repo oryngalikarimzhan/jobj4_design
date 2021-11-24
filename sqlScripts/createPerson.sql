@@ -4,6 +4,6 @@ create table person (
 	birthday date,
 	passportNumber int
 );
-insert into person (name, birthday, passportNumber) values ('oryngali', '1996-02-09', '351604');
+insert into person (personName, birthday, passportNumber) values ('oryngali', '1996-02-09', '351604');
 select * from person;
 
