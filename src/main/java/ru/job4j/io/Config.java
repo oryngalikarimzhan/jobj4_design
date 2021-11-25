@@ -10,7 +10,7 @@ import java.util.StringJoiner;
 public class Config {
 
     private final String path;
-    private final Map<String, String> values = new HashMap<String, String>();
+    private final Map<String, String> values = new HashMap<>();
 
     public Config(final String path) {
         this.path = path;
@@ -51,7 +51,7 @@ public class Config {
     }
 
     public static void main(String[] args) {
-        Config config = new Config("app.properties");
+        Config config = new Config("./data/app.properties");
         config.load();
         System.out.println(config.value("hibernate.dialect"));
     }
