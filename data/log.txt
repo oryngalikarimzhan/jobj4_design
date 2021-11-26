@@ -1,12 +1,93 @@
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:18 +0300] "GET /items/ajax.html HTTP/1.1" 404 1113
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:23 +0300] "GET /job4j.ru/profile HTTP/1.1" 302 -
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:23 +0300] "GET /job4j.ru/profile/ HTTP/1.1" 404 1110
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:34 +0300] "GET /job4j.ru/profileNew/ HTTP/1.1" 404 -
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:48 +0300] "GET / HTTP/1.1" 200 11488
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:49 +0300] "GET /tomcat.png HTTP/1.1" 200 5103
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:49 +0300] "GET /tomcat.css HTTP/1.1" 200 5931
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:49 +0300] "GET /bg-nav.png HTTP/1.1" 200 1401
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:49 +0300] "GET /bg-button.png HTTP/1.1" 200 713
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:49 +0300] "GET /bg-middle.png HTTP/1.1" 200 1918
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:49 +0300] "GET /bg-nav.png HTTP/1.1" 200 1404
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:49 +0300] "GET /404.png HTTP/1.1" 200 1401
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/tree/SimpleTreeTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/collection/SimpleStackTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/collection/list/SimpleLinkedListTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/collection/ForwardLinkedTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/collection/SimpleQueueTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/it/BackwardArrayItTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/it/ArrayItTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/it/MatrixItTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/io/CSVReaderTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/io/ConfigTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/io/AnalizyTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/io/ArgsNameTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/question/AnalizeTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/iterator/EvenIteratorTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/iterator/FlatMapTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/iterator/ListUtilsTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/map/SimpleMapTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/list/SimpleArrayListTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/set/SimpleSetTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/test/java/ru/job4j/AppTest.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/generics/Generics.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/generics/Base.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/generics/User.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/generics/UserStore.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/generics/Predator.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/generics/Role.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/generics/Store.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/generics/Tiger.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/generics/Animal.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/generics/RoleStore.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/generics/MemStore.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/tree/Tree.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/tree/SimpleTree.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/collection/SimpleQueue.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/collection/SimpleStack.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/collection/list/List.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/collection/list/SimpleLinkedList.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/collection/ForwardLinked.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/serialization/java/Contact.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/serialization/json/B.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/serialization/json/Contact.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/serialization/json/Info.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/serialization/json/EReader.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/serialization/json/Person.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/serialization/json/Main.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/serialization/json/Brand.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/serialization/json/A.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/it/MatrixIt.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/it/ArrayIt.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/it/BackwardArrayIt.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/SearchFiles.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/UsageLog4j.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/serialization/xml/Contact.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/serialization/xml/Person.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/serialization/xml/Main.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/CSVReader.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/LogFilter.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/ConsoleChat.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/Zip.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/Analizy.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/EchoServer.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/PrintFiles.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/ReadFile.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/ArgsName.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/UsageEncoding.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/ResultFile.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/Config.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/Search.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/EvenNumberFile.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/scanner/ScannerExample1.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/scanner/ScannerExample2.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/scanner/ScannerExample3.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/duplicates/FileProperty.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/duplicates/DuplicatesVisitor.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/duplicates/DuplicatesFinder.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/io/Dir.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/question/Info.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/question/User.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/question/Analize.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/search/SearchFiles.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/search/Search.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/search/ArgumentsName.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/iterator/EvenNumbersIterator.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/iterator/ListUtils.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/iterator/FlatMap.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/map/Map.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/map/SimpleMap.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/map/User.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/list/SimpleArrayList.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/list/List.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/App.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/set/SimpleSet.java
+/Users/oryngalikarimzhan/IdeaProjects/jobj4_design/./src/main/java/ru/job4j/set/Set.java

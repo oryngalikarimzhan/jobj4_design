@@ -9,7 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.regex.Pattern;
 
 public class Search {
 
@@ -47,29 +46,28 @@ public class Search {
     }
 
     public static void search(ArgumentsName argsName) throws IOException {
-
         Path root = Paths.get(argsName.get("d"));
         Path target = Paths.get(argsName.get("o"));
         String searchingWord = argsName.get("n");
         String searchingType = argsName.get("t");
 
+        SearchFiles searcher = new SearchFiles(predicate(searchingWord, searchingType));
+        Files.walkFileTree(root, searcher);
+        writeLog(target, searcher.getPaths());
+    }
 
+    public static Predicate<Path> predicate(String searchingWord, String searchingType) {
         Predicate<Path> predictor = null;
-        Pattern pattern;
         if ("name".equals(searchingType)) {
             predictor = p -> p.toFile().getName().equals(searchingWord);
         } else if ("mask".equals(searchingType)) {
             String mask = searchingWord.replaceAll("\\*", ".\\*");
-            mask = mask.replaceAll("\\?", ".\\?");
-            pattern = Pattern.compile(mask);
-            predictor = p -> p.toFile().getName().matches(pattern.toString());
+            String finalMask = mask.replaceAll("\\?", ".\\?");
+            predictor = p -> p.toFile().getName().matches(finalMask);
         } else if ("regex".equals(searchingType)) {
-            pattern = Pattern.compile(searchingWord);
-            predictor = p -> p.toFile().getName().matches(pattern.toString());
+            predictor = p -> p.toFile().getName().matches(searchingWord);
         }
-        SearchFiles searcher = new SearchFiles(predictor);
-        Files.walkFileTree(root, searcher);
-        writeLog(target, searcher.getPaths());
+        return predictor;
     }
 
     public static void writeLog(Path target, List<Path> pathList) {
