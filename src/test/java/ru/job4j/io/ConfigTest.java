@@ -20,7 +20,7 @@ public class ConfigTest {
     }
     @Test
     public void whenAppProperties() {
-        String path = "app.properties";
+        String path = "./data/app.properties";
         Config config = new Config(path);
         config.load();
         assertThat(config.value("hibernate.dialect"), is("org.hibernate.dialect.PostgreSQLDialect"));
