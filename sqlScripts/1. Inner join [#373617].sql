@@ -21,7 +21,25 @@ insert into officer(name, rank_id, since) values ('Petr', 3, '2009-01-01');
 insert into officer(name, since) values ('Vasya', '2020-01-01');
 insert into officer(name, since) values ('Anya', '2020-01-01');
 
-select o.name, r.name, o.since from officer as o join rank as r on o.rank_id = r.id;
-select o.name as Имя, r.name as Звание, o.since as "В службе с" from officer as o join rank as r on o.rank_id = r.id;
-select o.name as Имя, r.name as Звание, o.since as "В службе с" from officer as o join rank as r on o.rank_id = r.id where r.name != 'sergeant';
-select o.name as Имя, r.name as Звание, o.since as "В службе с" from officer as o join rank as r on o.rank_id = r.id where o.since < '2010-01-01';
+select o.name, r.name, o.since 
+from officer as o 
+join rank as r 
+on o.rank_id = r.id;
+
+select o.name as Имя, r.name as Звание, o.since as "В службе с" 
+from officer as o 
+join rank as r 
+on o.rank_id = r.id;
+
+select o.name as Имя, r.name as Звание, o.since as "В службе с" 
+from officer as o 
+join rank as r 
+on o.rank_id = r.id 
+where r.name != 'sergeant';
+
+
+select o.name as Имя, r.name as Звание, o.since as "В службе с" 
+from officer as o 
+join rank as r 
+on o.rank_id = r.id 
+where o.since < '2010-01-01';
