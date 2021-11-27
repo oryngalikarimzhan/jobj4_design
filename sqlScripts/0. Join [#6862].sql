@@ -46,13 +46,14 @@ where d.id is null;
 
 /*4. Используя left и right join написать запросы, которые давали бы одинаковый результат.*/
 
-select * from departments d 
+select d.name, e.name from departments d 
 right join employees e 
 on e.department_id = d.id;
 
-select * from employees e
+select d.name, e.name from employees e
 left join departments d 
 on e.department_id = d.id;
+
 --------------------------------------------------------
 /*5.1 Создать таблицу teens с атрибутами name, gender и заполнить ее.*/
 create table teens(
