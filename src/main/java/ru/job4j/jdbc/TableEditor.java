@@ -11,12 +11,12 @@ public class TableEditor implements AutoCloseable {
 
     private Properties properties;
 
-    public TableEditor(Properties properties) throws Exception{
+    public TableEditor(Properties properties) throws Exception {
         this.properties = properties;
         initConnection();
     }
 
-    private void initConnection() throws Exception{
+    private void initConnection() throws Exception {
         Class.forName(properties.getProperty("driver"));
         String url = properties.getProperty("url");
         String login = properties.getProperty("login");
@@ -55,7 +55,7 @@ public class TableEditor implements AutoCloseable {
     }
 
     public void renameColumn(
-            String tableName, String columnName, String newColumnName) throws Exception{
+            String tableName, String columnName, String newColumnName) throws Exception {
         String sql = String.format(
                 "alter table if exists %s rename column %s to %s;",
                 tableName, columnName, newColumnName
