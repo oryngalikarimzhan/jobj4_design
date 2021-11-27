@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 public class Search {
 
@@ -63,9 +64,11 @@ public class Search {
         } else if ("mask".equals(searchingType)) {
             String mask = searchingWord.replaceAll("\\*", ".\\*");
             String finalMask = mask.replaceAll("\\?", ".\\?");
-            predictor = p -> p.toFile().getName().matches(finalMask);
+            Pattern pattern = Pattern.compile(finalMask);
+            predictor = p -> pattern.matcher(p.toFile().getName()).matches();
         } else if ("regex".equals(searchingType)) {
-            predictor = p -> p.toFile().getName().matches(searchingWord);
+            Pattern pattern = Pattern.compile(searchingWord);
+            predictor = p -> pattern.matcher(p.toFile().getName()).matches();
         }
         return predictor;
     }
