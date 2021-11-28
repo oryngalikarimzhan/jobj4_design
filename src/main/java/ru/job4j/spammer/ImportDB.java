@@ -22,7 +22,10 @@ public class ImportDB {
     public List<User> load() throws IOException {
         List<User> users = new ArrayList<>();
         try (BufferedReader rd = new BufferedReader(new FileReader(dump))) {
-            rd.lines().map(line -> line.split(";")).forEach(strings -> users.add(new User(strings[0], strings[1])));
+            rd.lines()
+                    .map(line -> line.split(";"))
+                    .filter(strings -> strings.length == 2)
+                    .forEach(strings -> users.add(new User(strings[0], strings[1])));
         }
         return users;
     }
@@ -34,13 +37,16 @@ public class ImportDB {
                 cfg.getProperty("jdbc.username"),
                 cfg.getProperty("jdbc.password")
         )) {
+            int count = 0;
             for (User user : users) {
                 try (PreparedStatement ps = cnt.prepareStatement("insert into users(name, email) values (?, ?)")) {
                     ps.setString(1, user.name);
                     ps.setString(2, user.email);
                     ps.execute();
+                    count += ps.executeUpdate();
                 }
             }
+            System.out.println("Loaded to database " + count);
         }
     }
 
