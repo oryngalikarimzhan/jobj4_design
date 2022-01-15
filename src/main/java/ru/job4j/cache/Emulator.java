@@ -29,27 +29,26 @@ public class Emulator {
             menu(filesMap);
             Scanner in = new Scanner(System.in);
             String number = String.valueOf(in.nextInt());
-            if (number.equals("999")) {
+            if (number.equals("000")) {
                 break;
             } else if (Integer.parseInt(number) < filesMap.size()) {
                 String choice = filesMap.get(number).toString();
                 System.out.println(dirFileCache.get(choice));
-                System.out.println("----------------------------------------------");
+                System.out.println("----------------------------------------------------------\n\n");
             } else {
                 System.out.println("---Enter again---");
             }
         }
     }
     private void menu(Map<String, Path> filesMap) {
-        System.out.println("Please choose the file by entering the relevant number");
+        System.out.println("----------------------------------------------------------\n"
+                + "Please choose the file by entering the relevant number");
         for (Map.Entry<String, Path> file : filesMap.entrySet()) {
             System.out.println(file.getKey() + " - " + file.getValue());
         }
-        System.out.println("999 - Close");
+        System.out.println("000 - Close");
     }
 }
-
-
 
 class DirVisit extends SimpleFileVisitor<Path> {
     private int count = 0;
