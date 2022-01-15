@@ -13,15 +13,12 @@ public abstract class AbstractCache<K, V> {
     }
 
     public V get(K key) {
-        if (cache.get(key) == null) {
-            System.out.println("---File was loaded to cache---");
-            load(key);
-        } else {
-            System.out.println("---File was already loaded to cache---");
+        V value = cache.getOrDefault(key, new SoftReference<>(null)).get();
+        if (value == null) {
+            value = load(key);
+            put(key, value);
         }
-        System.out.println("---Getting from cache---");
-        V result = cache.get(key).get();
-        return result != null ? result : get(key);
+        return value;
     }
 
     protected abstract V load(K key);
