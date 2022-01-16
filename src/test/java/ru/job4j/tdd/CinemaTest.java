@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CinemaTest {
 
-    @Test
+    /*@Test
     public void buy() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
@@ -60,5 +60,5 @@ public class CinemaTest {
         Calendar date = Calendar.getInstance();
         date.set(2020, 10, 10, 23, 00);
         Ticket ticket = cinema.buy(account, 1, 1, date, new Session3D());
-    }
+    }*/
 }
