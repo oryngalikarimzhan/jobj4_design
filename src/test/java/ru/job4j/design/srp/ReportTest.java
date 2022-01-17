@@ -76,7 +76,7 @@ public class ReportTest {
                 .append(System.lineSeparator())
                 .append(worker3.getName()).append("; ")
                 .append(worker3.getSalary()).append(";")
-                .append(System.lineSeparator());;
+                .append(System.lineSeparator());
         assertThat(hrDept.generate(em -> true), is(expect.toString()));
     }
 
