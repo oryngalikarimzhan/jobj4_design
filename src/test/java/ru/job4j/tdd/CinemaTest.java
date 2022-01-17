@@ -3,6 +3,7 @@ package ru.job4j.tdd;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -11,7 +12,8 @@ import java.util.List;
 
 public class CinemaTest {
 
-    /*@Test
+    @Ignore
+    @Test
     public void buy() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
@@ -22,6 +24,7 @@ public class CinemaTest {
         assertThat(ticket, is(new Ticket3D()));
     }
 
+    @Ignore
     @Test
     public void find() {
         Cinema cinema = new Cinema3D();
@@ -30,7 +33,8 @@ public class CinemaTest {
         assertThat(sessions, is(Arrays.asList(new Session3D())));
     }
 
-    @Test(expected = Exception.class)
+    @Ignore
+    @Test(expected = IllegalArgumentException.class)
     public void cantBuySameSeat() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
@@ -42,7 +46,8 @@ public class CinemaTest {
         Ticket ticket2 = cinema.buy(account, 1, 1, date, session);
     }
 
-    @Test(expected = Exception.class)
+    @Ignore
+    @Test(expected = IllegalArgumentException.class)
     public void cantBuyNotExistingSeat() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
@@ -53,12 +58,13 @@ public class CinemaTest {
         Ticket ticket = cinema.buy(account, 1000, 1, date, session);
     }
 
-    @Test(expected = Exception.class)
+    @Ignore
+    @Test(expected = IllegalArgumentException.class)
     public void cantBuyNotExistingSession() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
         Calendar date = Calendar.getInstance();
         date.set(2020, 10, 10, 23, 00);
         Ticket ticket = cinema.buy(account, 1, 1, date, new Session3D());
-    }*/
+    }
 }
