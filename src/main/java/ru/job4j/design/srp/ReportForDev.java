@@ -16,20 +16,30 @@ public class ReportForDev implements Report {
     @Override
     public String generate(Predicate<Employee> filter) {
         StringBuilder text = new StringBuilder();
-        text.append("Name; Hired; Fired; Salary;").append(System.lineSeparator());
+        String ln = System.lineSeparator();
+        text.append("<!DOCTYPE html>").append(ln)
+                .append("<html lang=\"EN\">").append(ln)
+                .append("<head>").append(ln)
+                .append("<meta charset=\"UTF-8\">").append(ln)
+                .append("<title>Report</title>").append(ln)
+                .append("</head>").append(ln)
+                .append("<body>").append(ln)
+                .append("<p>Name; Hired; Fired; Salary;</p>").append(ln);
+
         for (Employee employee : store.findBy(filter)) {
-            text.append(employee.getName()).append("; ")
+            text.append("<p>")
+                    .append(employee.getName()).append("; ")
                     .append(employee.getHired()).append("; ")
                     .append(employee.getFired()).append("; ")
                     .append(employee.getSalary()).append(";")
-                    .append(System.lineSeparator());
+                    .append("</p>")
+                    .append(ln);
         }
-        Path filePath = Path.of("./data/report.html");
-        try {
-            Files.writeString(filePath, text);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        text.append("</body>").append(ln).append("</html>");
         return text.toString();
     }
 }
+
+
+
+

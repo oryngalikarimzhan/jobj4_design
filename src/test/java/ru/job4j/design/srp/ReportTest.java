@@ -35,23 +35,24 @@ public class ReportTest {
         Employee worker = new Employee("Ivan", now, now, 100);
         store.add(worker);
         Report devReport = new ReportForDev(store);
+        String ln = System.lineSeparator();
         StringBuilder expect = new StringBuilder()
-                .append("Name; Hired; Fired; Salary;")
-                .append(System.lineSeparator())
+                .append("<!DOCTYPE html>").append(ln)
+                .append("<html lang=\"EN\">").append(ln)
+                .append("<head>").append(ln)
+                .append("<meta charset=\"UTF-8\">").append(ln)
+                .append("<title>Report</title>").append(ln)
+                .append("</head>").append(ln)
+                .append("<body>").append(ln)
+                .append("<p>Name; Hired; Fired; Salary;</p>").append(ln)
+                .append("<p>")
                 .append(worker.getName()).append("; ")
                 .append(worker.getHired()).append("; ")
                 .append(worker.getFired()).append("; ")
                 .append(worker.getSalary()).append(";")
-                .append(System.lineSeparator());
-        devReport.generate(em -> true);
-        Path filePath = Path.of("./data/report.html");
-        String result = null;
-        try {
-            result = Files.readString(filePath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assertThat(result, is(expect.toString()));
+                .append("</p>").append(ln)
+                .append("</body>").append(ln).append("</html>");
+        assertThat(devReport.generate(em -> true), is(expect.toString()));
     }
 
     @Test
