@@ -4,9 +4,9 @@ public class Phone {
     private String type;
     private String os;
 
-    public Phone(String type, String OS) {
+    public Phone(String type, String os) {
         this.type = type;
-        this.os = OS;
+        this.os = os;
     }
 
     public void use() {
