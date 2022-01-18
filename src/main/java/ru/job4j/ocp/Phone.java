@@ -2,18 +2,18 @@ package ru.job4j.ocp;
 
 public class Phone {
     private String type;
-    private String OS;
+    private String os;
 
     public Phone(String type, String OS) {
         this.type = type;
-        this.OS = OS;
+        this.os = OS;
     }
 
     public void use() {
         if (this.type == "iphone") {
-            System.out.println("use appstore because " + this.OS);
+            System.out.println("use appstore because " + this.os);
         } else if (this.type == "samsung") {
-            System.out.println("use playmarket because " + this.OS);
+            System.out.println("use playmarket because " + this.os);
         }
     }
 
