@@ -5,7 +5,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.ArrayList;
 import java.util.function.Predicate;
 
 public class XMLReport implements Report {
@@ -19,24 +18,17 @@ public class XMLReport implements Report {
     @Override
     public String generate(Predicate<Employee> filter) {
         StringBuilder text = new StringBuilder();
-        Marshaller marshaller = null;
-        try {
-            JAXBContext context = JAXBContext.newInstance(Employee.class);
-            marshaller = context.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
+        var employee = store.findBy(filter);
+        try (StringWriter writer = new StringWriter()) {
+            JAXBContext context = JAXBContext.newInstance(Employees.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.marshal(new Employees(employee), writer);
+            text.append(writer.getBuffer());
         } catch (JAXBException e) {
             e.printStackTrace();
-        }
-        for (Employee employee : store.findBy(filter)) {
-            try (StringWriter writer = new StringWriter()) {
-                marshaller.marshal(employee, writer);
-                text.append(writer.getBuffer())
-                        .append(System.lineSeparator());
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JAXBException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return text.toString();
     }

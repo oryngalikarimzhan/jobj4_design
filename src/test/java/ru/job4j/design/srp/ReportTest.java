@@ -111,24 +111,27 @@ public class ReportTest {
         Report xmlReport = new XMLReport(store);
         StringBuilder expect = new StringBuilder();
         try {
-            expect.append("<Employee name=\"")
-            .append(worker1.getName())
-            .append("\" hired=\"")
-            .append(DatatypeFactory.newInstance()
-                    .newXMLGregorianCalendar((GregorianCalendar) worker1.getHired()))
-            .append("\" fired=\"")
-            .append(DatatypeFactory.newInstance()
-                    .newXMLGregorianCalendar((GregorianCalendar) worker1.getFired()))
-            .append("\" salary=\"").append(worker1.getSalary()).append("\"/>\n")
-            .append("<Employee name=\"")
-            .append(worker2.getName())
-            .append("\" hired=\"")
-            .append(DatatypeFactory.newInstance()
-                    .newXMLGregorianCalendar((GregorianCalendar) worker2.getHired()))
-            .append("\" fired=\"")
-            .append(DatatypeFactory.newInstance()
-                    .newXMLGregorianCalendar((GregorianCalendar) worker2.getFired()))
-            .append("\" salary=\"").append(worker2.getSalary()).append("\"/>\n");
+            expect.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n")
+                    .append("<Employees>\n")
+                    .append("    <Employee name=\"")
+                    .append(worker1.getName())
+                    .append("\" hired=\"")
+                    .append(DatatypeFactory.newInstance()
+                            .newXMLGregorianCalendar((GregorianCalendar) worker1.getHired()))
+                    .append("\" fired=\"")
+                    .append(DatatypeFactory.newInstance()
+                            .newXMLGregorianCalendar((GregorianCalendar) worker1.getFired()))
+                    .append("\" salary=\"").append(worker1.getSalary()).append("\"/>\n")
+                    .append("    <Employee name=\"")
+                    .append(worker2.getName())
+                    .append("\" hired=\"")
+                    .append(DatatypeFactory.newInstance()
+                            .newXMLGregorianCalendar((GregorianCalendar) worker2.getHired()))
+                    .append("\" fired=\"")
+                    .append(DatatypeFactory.newInstance()
+                            .newXMLGregorianCalendar((GregorianCalendar) worker2.getFired()))
+                    .append("\" salary=\"").append(worker2.getSalary()).append("\"/>\n")
+                    .append("</Employees>\n");
         } catch (DatatypeConfigurationException e) {
             e.printStackTrace();
         }
