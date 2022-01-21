@@ -3,10 +3,11 @@ package ru.job4j.design.srp;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
 import org.junit.Test;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class ReportTest {
 
@@ -97,5 +98,78 @@ public class ReportTest {
                 .append(worker.getSalary()).append(" руб.").append(";")
                 .append(System.lineSeparator());
         assertThat(accDept.generate(em -> true), is(expect.toString()));
+    }
+
+    @Test
+    public void whenGenerateXML() {
+        MemStore store = new MemStore();
+        Calendar now = Calendar.getInstance();
+        Employee worker1 = new Employee("Ivan", now, now, 100);
+        Employee worker2 = new Employee("Petr", now, now, 110);
+        store.add(worker1);
+        store.add(worker2);
+        Report xmlReport = new XMLReport(store);
+        StringBuilder expect = new StringBuilder();
+        try {
+            expect.append("<Employee name=\"")
+            .append(worker1.getName())
+            .append("\" hired=\"")
+            .append(DatatypeFactory.newInstance()
+                    .newXMLGregorianCalendar((GregorianCalendar) worker1.getHired()))
+            .append("\" fired=\"")
+            .append(DatatypeFactory.newInstance()
+                    .newXMLGregorianCalendar((GregorianCalendar) worker1.getFired()))
+            .append("\" salary=\"").append(worker1.getSalary()).append("\"/>\n")
+            .append("<Employee name=\"")
+            .append(worker2.getName())
+            .append("\" hired=\"")
+            .append(DatatypeFactory.newInstance()
+                    .newXMLGregorianCalendar((GregorianCalendar) worker2.getHired()))
+            .append("\" fired=\"")
+            .append(DatatypeFactory.newInstance()
+                    .newXMLGregorianCalendar((GregorianCalendar) worker2.getFired()))
+            .append("\" salary=\"").append(worker2.getSalary()).append("\"/>\n");
+        } catch (DatatypeConfigurationException e) {
+            e.printStackTrace();
+        }
+        assertThat(xmlReport.generate(em -> true), is(expect.toString()));
+    }
+
+    @Test
+    public void whenGenerateJSON() {
+        MemStore store = new MemStore();
+        Calendar now = Calendar.getInstance();
+        Employee worker = new Employee(
+                "Ivan",
+                new GregorianCalendar(2021, 01, 01),
+                new GregorianCalendar(2021, 01, 01),
+                100
+        );
+        store.add(worker);
+        Report jsonReport = new JSONReport(store);
+        StringBuilder expect = new StringBuilder()
+                .append("[\n")
+                .append("  {\n")
+                .append("    \"name\": \"Ivan\",\n")
+                .append("    \"hired\": {\n")
+                .append("      \"year\": 2021,\n")
+                .append("      \"month\": 1,\n")
+                .append("      \"dayOfMonth\": 1,\n")
+                .append("      \"hourOfDay\": 0,\n")
+                .append("      \"minute\": 0,\n")
+                .append("      \"second\": 0\n")
+                .append("    },\n")
+                .append("    \"fired\": {\n")
+                .append("      \"year\": 2021,\n")
+                .append("      \"month\": 1,\n")
+                .append("      \"dayOfMonth\": 1,\n")
+                .append("      \"hourOfDay\": 0,\n")
+                .append("      \"minute\": 0,\n")
+                .append("      \"second\": 0\n")
+                .append("    },\n")
+                .append("    \"salary\": 100.0\n")
+                .append("  }\n")
+                .append("]");
+        assertThat(jsonReport.generate(em -> true), is(expect.toString()));
     }
 }

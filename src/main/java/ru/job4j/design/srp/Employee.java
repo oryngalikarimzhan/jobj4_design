@@ -1,13 +1,24 @@
 package ru.job4j.design.srp;
 
+import javax.xml.bind.annotation.*;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
 
+@XmlRootElement(name = "Employee")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Employee {
+    @XmlAttribute
     private String name;
+    @XmlAttribute
     private Calendar hired;
+    @XmlAttribute
     private Calendar fired;
+    @XmlAttribute
     private double salary;
+
+    public Employee() {
+    }
 
     public Employee(String name, Calendar hired, Calendar fired, double salary) {
         this.name = name;
@@ -69,8 +80,8 @@ public class Employee {
     public String toString() {
         return "Employee{"
                 + "name='" + name + '\''
-                + ", hired=" + hired.getTime()
-                + ", fired=" + fired.getTime()
+                + ", hired=" + new SimpleDateFormat("yyyy-MM-dd").format(hired.getTime())
+                + ", fired=" + fired
                 + ", salary=" + salary
                 + '}';
     }
