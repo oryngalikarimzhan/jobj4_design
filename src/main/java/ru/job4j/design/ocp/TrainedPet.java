@@ -1,4 +1,4 @@
-package ru.job4j.ocp;
+package ru.job4j.design.ocp;
 
 public class TrainedPet {
     public void dance() {

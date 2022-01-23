@@ -47,3 +47,4 @@ class Violations implements Iterable<Integer> {
     }
 
 }
+
