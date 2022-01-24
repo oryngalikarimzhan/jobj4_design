@@ -6,30 +6,22 @@ import java.util.List;
 public class Shop implements Storage {
 
     private List<Food> shopFoods = new ArrayList<>();
-    private int discount;
-
-    public Shop(int discount, List<Food> shopFoods) {
-        this.shopFoods = shopFoods;
-        this.discount = discount;
-    }
-
-    public Shop(int discount) {
-        this.discount = discount;
-    }
 
     @Override
-    public void add(Food food) {
-        shopFoods.add(food);
+    public boolean add(Food food) {
+        return admit(food) && shopFoods.add(food);
     }
 
     @Override
     public List<Food> getStorageFoodList() {
-        return shopFoods;
+        List<Food> foodList = new ArrayList<>();
+        foodList.addAll(shopFoods);
+        return foodList;
     }
 
     @Override
-    public boolean admittance(Food food) {
+    public boolean admit(Food food) {
         float percentage = getPercentage(food);
-        return percentage >= 25 && percentage < 100 && (!(percentage >= 75) || food.setDiscount(discount));
+        return percentage >= 25 && percentage < 100 && (!(percentage >= 75) || food.setDiscount(30));
     }
 }

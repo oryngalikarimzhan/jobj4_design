@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface Storage {
 
-    void add(Food food);
+    boolean add(Food food);
 
     List<Food> getStorageFoodList();
 
-    boolean admittance(Food food);
+    boolean admit(Food food);
 
     default float getPercentage(Food food) {
         var create = food.getCreateDate();

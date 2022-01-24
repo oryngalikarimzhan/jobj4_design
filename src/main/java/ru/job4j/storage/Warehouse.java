@@ -7,25 +7,20 @@ public class Warehouse implements Storage {
 
     private List<Food> warehouseFoods = new ArrayList<>();
 
-    public Warehouse() {
-    }
-
-    public Warehouse(List<Food> warehouseFoods) {
-        this.warehouseFoods = warehouseFoods;
-    }
-
     @Override
-    public void add(Food food) {
-        warehouseFoods.add(food);
+    public boolean add(Food food) {
+        return admit(food) && warehouseFoods.add(food);
     }
 
     @Override
     public List<Food> getStorageFoodList() {
-        return warehouseFoods;
+        List<Food> foodList = new ArrayList<>();
+        foodList.addAll(warehouseFoods);
+        return foodList;
     }
 
     @Override
-    public boolean admittance(Food food) {
+    public boolean admit(Food food) {
         return getPercentage(food) < 25;
     }
 }

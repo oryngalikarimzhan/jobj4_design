@@ -6,25 +6,20 @@ import java.util.List;
 public class Trash implements Storage {
     private List<Food> trashFoods = new ArrayList<>();
 
-    public Trash() {
-    }
-
-    public Trash(List<Food> trashFoods) {
-        this.trashFoods = trashFoods;
-    }
-
     @Override
-    public void add(Food food) {
-        trashFoods.add(food);
+    public boolean add(Food food) {
+        return admit(food) && trashFoods.add(food);
     }
 
     @Override
     public List<Food> getStorageFoodList() {
-        return trashFoods;
+        List<Food> foodList = new ArrayList<>();
+        foodList.addAll(trashFoods);
+        return foodList;
     }
 
     @Override
-    public boolean admittance(Food food) {
+    public boolean admit(Food food) {
         return getPercentage(food) >= 100;
     }
 }
