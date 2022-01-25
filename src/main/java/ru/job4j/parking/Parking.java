@@ -1,10 +1,8 @@
 package ru.job4j.parking;
 
-import java.util.List;
-
 public interface Parking {
 
-Transport[] showAll();
+Transport[] getTransports();
 
 boolean add(Transport transport);
 

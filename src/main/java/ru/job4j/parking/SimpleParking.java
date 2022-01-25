@@ -1,76 +1,88 @@
 package ru.job4j.parking;
 
 public class SimpleParking implements Parking {
-    Transport[] transports;
-    private final int carPlaces;
-    private final int truckPlaces;
-    private int countCar = 0;
-    private int countTruck = 0;
+    private Transport[] transports;
+    private Transport[] trucks;
+    private final int carSpaces;
+    private final int truckSpaces;
+    private int occupiedCarSpaces = 0;
+    private int occupiedTruckSpaces = 0;
+    private int transportSize;
 
-
-
-    public SimpleParking(int carPlaces, int truckPlaces) {
-        this.carPlaces = carPlaces;
-        this.truckPlaces = truckPlaces;
-        this.transports = new Transport[carPlaces + truckPlaces];
+    public SimpleParking(int carSpaces, int truckSpaces) {
+        this.carSpaces = carSpaces;
+        this.truckSpaces = truckSpaces;
+        this.transports = new Transport[carSpaces];
+        this.trucks = new Truck[truckSpaces];
     }
 
     @Override
-    public Transport[] showAll() {
-        return transports;
+    public Transport[] getTransports() {
+        Transport[] allTransport = new Transport[carSpaces + truckSpaces];
+        System.arraycopy(transports, 0, allTransport, 0, carSpaces);
+        System.arraycopy(trucks, 0, allTransport, carSpaces, truckSpaces);
+        return allTransport;
     }
 
     @Override
     public boolean add(Transport transport) {
-        int transportSize = transport.getSize();
+        this.transportSize = transport.getSize();
         boolean result = false;
         if (transportSize == 1) {
-            if (countCar < carPlaces) {
-                transports[countCar] = transport;
-                countCar++;
-                result = true;
-            }
+            result = addCar(transport);
         } else if (transportSize > 1) {
-            if (countTruck < truckPlaces) {
-                transports[carPlaces + countTruck] = transport;
-                countTruck++;
-                result = true;
-            } else if (carPlaces - countCar >= transportSize) {
-                boolean test = false;
-                for (int i = 0; i != carPlaces; i++) {
-                    int counter = 0;
-                    for (int x = 0; x < transportSize; x++) {
-                        if (transports[i + x] == null) {
-                            counter++;
-                            test = true;
-                        } else {
-                            test = false;
-                        }
-                    }
-                    if (counter == transportSize) {
-                        break;
-                    }
-                }
-                if (test) {
-                    for (int i = 0; i != transportSize; i++) {
-                        transports[countCar + i] = transport;
-                    }
-                    countCar += transportSize;
-                    result = true;
-                }
-            }
+            result = addTruck(transport);
         }
         return result;
     }
 
-    public static void main(String[] args) {
-        SimpleParking simpleParking = new SimpleParking(2, 1);
-        System.out.println(simpleParking.add(new Truck("truck1", 2, "wf", "ewf")));
-        System.out.println(simpleParking.add(new Car("car1", "efw", "fewf")));
-        System.out.println(simpleParking.add(new Truck("truck2", 2, "wf", "ewf")));
-        for (Transport transport : simpleParking.transports) {
-            System.out.println(transport);
+    private boolean addCar(Transport transport) {
+        if (freeCarSpaces() > 0) {
+            transports[occupiedCarSpaces++] = transport;
+            return true;
         }
-        System.out.println(simpleParking.add(new Truck("truck3", 2, "wf", "ewf")));
+        return false;
+    }
+
+    private boolean addTruck(Transport transport) {
+        if (freeTruckSpaces() > 0) {
+            trucks[occupiedTruckSpaces++] = transport;
+            return true;
+        } else if (freeCarSpaces() >= transportSize) {
+            if (canTruckFitToCarSpace()) {
+                for (int i = 0; i != transportSize; i++) {
+                    transports[occupiedCarSpaces++] = transport;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int freeCarSpaces() {
+        return carSpaces - occupiedCarSpaces;
+    }
+
+    private int freeTruckSpaces() {
+        return truckSpaces - occupiedTruckSpaces;
+    }
+
+    private boolean canTruckFitToCarSpace() {
+        boolean sizeConfirm = false;
+        for (int i = occupiedCarSpaces; i != carSpaces; i++) {
+            int sizeChecker = 0;
+            for (int x = 0; x < transportSize; x++) {
+                if (transports[i + x] == null) {
+                    sizeChecker++;
+                    sizeConfirm = true;
+                } else {
+                    sizeConfirm = false;
+                }
+            }
+            if (sizeChecker == transportSize) {
+                break;
+            }
+        }
+        return sizeConfirm;
     }
 }
