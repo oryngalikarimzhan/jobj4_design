@@ -9,14 +9,12 @@ public class Warehouse implements Storage {
 
     @Override
     public boolean add(Food food) {
-        return admit(food) && warehouseFoods.add(food);
+        return warehouseFoods.add(food);
     }
 
     @Override
     public List<Food> getStorageFoodList() {
-        List<Food> foodList = new ArrayList<>();
-        foodList.addAll(warehouseFoods);
-        return foodList;
+        return new ArrayList<>(warehouseFoods);
     }
 
     @Override

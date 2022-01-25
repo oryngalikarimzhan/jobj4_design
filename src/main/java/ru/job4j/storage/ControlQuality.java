@@ -14,7 +14,10 @@ public class ControlQuality {
     public void checkFoods(List<Food> foods) {
         for (Food food : foods) {
             for (Storage storage : this.storage) {
-                storage.add(food);
+                if (storage.admit(food)) {
+                    storage.add(food);
+                    break;
+                }
             }
         }
     }

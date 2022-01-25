@@ -8,14 +8,12 @@ public class Trash implements Storage {
 
     @Override
     public boolean add(Food food) {
-        return admit(food) && trashFoods.add(food);
+        return trashFoods.add(food);
     }
 
     @Override
     public List<Food> getStorageFoodList() {
-        List<Food> foodList = new ArrayList<>();
-        foodList.addAll(trashFoods);
-        return foodList;
+        return new ArrayList<>(trashFoods);
     }
 
     @Override
