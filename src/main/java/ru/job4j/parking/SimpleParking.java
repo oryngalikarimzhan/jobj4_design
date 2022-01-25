@@ -1,8 +1,8 @@
 package ru.job4j.parking;
 
 public class SimpleParking implements Parking {
-    private Transport[] transports;
-    private Transport[] trucks;
+    private final Transport[] transports;
+    private final Transport[] trucks;
     private final int carSpaces;
     private final int truckSpaces;
     private int occupiedCarSpaces = 0;
@@ -37,7 +37,7 @@ public class SimpleParking implements Parking {
     }
 
     private boolean addCar(Transport transport) {
-        if (freeCarSpaces() > 0) {
+        if (freeSpaces(carSpaces, occupiedCarSpaces) > 0) {
             transports[occupiedCarSpaces++] = transport;
             return true;
         }
@@ -45,10 +45,10 @@ public class SimpleParking implements Parking {
     }
 
     private boolean addTruck(Transport transport) {
-        if (freeTruckSpaces() > 0) {
+        if (freeSpaces(truckSpaces, occupiedTruckSpaces) > 0) {
             trucks[occupiedTruckSpaces++] = transport;
             return true;
-        } else if (freeCarSpaces() >= transportSize) {
+        } else if (freeSpaces(carSpaces, occupiedCarSpaces) >= transportSize) {
             if (canTruckFitToCarSpace()) {
                 for (int i = 0; i != transportSize; i++) {
                     transports[occupiedCarSpaces++] = transport;
@@ -59,12 +59,8 @@ public class SimpleParking implements Parking {
         return false;
     }
 
-    private int freeCarSpaces() {
-        return carSpaces - occupiedCarSpaces;
-    }
-
-    private int freeTruckSpaces() {
-        return truckSpaces - occupiedTruckSpaces;
+    private int freeSpaces(int total, int occupied) {
+        return total - occupied;
     }
 
     private boolean canTruckFitToCarSpace() {
