@@ -28,9 +28,9 @@ public class SimpleParking implements Parking {
     public boolean add(Transport transport) {
         this.transportSize = transport.getSize();
         boolean result = false;
-        if (transportSize == 1) {
+        if (transportSize == Car.SIZE) {
             result = addCar(transport);
-        } else if (transportSize > 1) {
+        } else if (transportSize > Car.SIZE) {
             result = addTruck(transport);
         }
         return result;
