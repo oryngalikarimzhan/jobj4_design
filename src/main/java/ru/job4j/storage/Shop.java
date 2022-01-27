@@ -14,7 +14,7 @@ public class Shop implements Storage {
 
     @Override
     public List<Food> getStorageFoodList() {
-        return new ArrayList<>(shopFoods);
+        return shopFoods;
     }
 
     @Override

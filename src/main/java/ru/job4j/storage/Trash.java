@@ -13,7 +13,7 @@ public class Trash implements Storage {
 
     @Override
     public List<Food> getStorageFoodList() {
-        return new ArrayList<>(trashFoods);
+        return trashFoods;
     }
 
     @Override
