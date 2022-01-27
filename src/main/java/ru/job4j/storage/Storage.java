@@ -8,9 +8,13 @@ public interface Storage {
 
     boolean add(Food food);
 
-    List<Food> getStorageFoodList();
+    List<Food> getFoodList();
+
+    void clear();
 
     boolean admit(Food food);
+
+
 
     default float getPercentage(Food food) {
         var create = food.getCreateDate();

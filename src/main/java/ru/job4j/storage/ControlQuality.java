@@ -25,8 +25,8 @@ public class ControlQuality {
 
     private List<Food> collect() {
         List<Food> allFoods = new ArrayList<>();
-        storages.forEach(storage -> allFoods.addAll(storage.getStorageFoodList()));
-        storages.forEach(st -> st.getStorageFoodList().clear());
+        storages.forEach(storage -> allFoods.addAll(storage.getFoodList()));
+        storages.forEach(Storage::clear);
         return allFoods;
     }
 
@@ -55,9 +55,9 @@ public class ControlQuality {
                 )
         );
         controlQuality.resort();
-        System.out.println(warehouse.getStorageFoodList());
-        System.out.println(shop.getStorageFoodList());
-        System.out.println(trash.getStorageFoodList());
+        System.out.println(warehouse.getFoodList());
+        System.out.println(shop.getFoodList());
+        System.out.println(trash.getFoodList());
     }
 }
 

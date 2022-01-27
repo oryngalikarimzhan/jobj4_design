@@ -13,12 +13,17 @@ public class Warehouse implements Storage {
     }
 
     @Override
-    public List<Food> getStorageFoodList() {
-        return warehouseFoods;
+    public List<Food> getFoodList() {
+        return new ArrayList<>(warehouseFoods);
     }
 
     @Override
     public boolean admit(Food food) {
         return getPercentage(food) < 25;
+    }
+
+    @Override
+    public void clear() {
+        warehouseFoods.clear();
     }
 }

@@ -13,13 +13,18 @@ public class Shop implements Storage {
     }
 
     @Override
-    public List<Food> getStorageFoodList() {
-        return shopFoods;
+    public List<Food> getFoodList() {
+        return new ArrayList<>(shopFoods);
     }
 
     @Override
     public boolean admit(Food food) {
         float percentage = getPercentage(food);
         return percentage >= 25 && percentage < 100 && (!(percentage >= 75) || food.setDiscount(30));
+    }
+
+    @Override
+    public void clear() {
+        shopFoods.clear();
     }
 }

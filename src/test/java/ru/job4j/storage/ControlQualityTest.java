@@ -30,7 +30,7 @@ public class ControlQualityTest {
                     food
                 )
         );
-        assertEquals(food, warehouse.getStorageFoodList().get(0));
+        assertEquals(food, warehouse.getFoodList().get(0));
     }
 
     @Test
@@ -54,7 +54,7 @@ public class ControlQualityTest {
                         new Food("d", LocalDate.now().plusDays(100), LocalDate.now().minusDays(30), 120)
                 )
         );
-        assertEquals(food, trash.getStorageFoodList().get(0));
+        assertEquals(food, trash.getFoodList().get(0));
     }
 
     @Test
@@ -79,6 +79,6 @@ public class ControlQualityTest {
                         new Food("d", LocalDate.now().plusDays(100), LocalDate.now().minusDays(30), 120)
                 )
         );
-        assertEquals(List.of(food1, food2), shop.getStorageFoodList());
+        assertEquals(List.of(food1, food2), shop.getFoodList());
     }
 }

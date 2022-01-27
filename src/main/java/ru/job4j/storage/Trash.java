@@ -12,12 +12,17 @@ public class Trash implements Storage {
     }
 
     @Override
-    public List<Food> getStorageFoodList() {
-        return trashFoods;
+    public List<Food> getFoodList() {
+        return new ArrayList<>(trashFoods);
     }
 
     @Override
     public boolean admit(Food food) {
         return getPercentage(food) >= 100;
+    }
+
+    @Override
+    public void clear() {
+        trashFoods.clear();
     }
 }
