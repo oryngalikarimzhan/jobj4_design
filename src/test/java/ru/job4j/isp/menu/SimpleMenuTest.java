@@ -36,7 +36,7 @@ public class SimpleMenuTest {
                 ),
                 menu.select("Покормить собаку").get()
         );
-//        menu.forEach(i -> System.out.println(i.getNumber() + i.getName()));
+        menu.forEach(i -> System.out.println(i.getNumber() + i.getName()));
         new SimpleMenuPrinter().print(menu);
     }
 
