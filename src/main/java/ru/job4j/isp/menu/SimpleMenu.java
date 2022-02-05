@@ -11,7 +11,7 @@ public class SimpleMenu implements Menu {
     @Override
     public boolean add(String parentName, String childName, ActionDelegate actionDelegate) {
         boolean rsl = false;
-        if (parentName == null) {
+        if (parentName == Menu.ROOT) {
             rootElements.add(new SimpleMenuItem(childName, actionDelegate));
             rsl = true;
         } else {
@@ -40,10 +40,24 @@ public class SimpleMenu implements Menu {
 
     @Override
     public Iterator<MenuItemInfo> iterator() {
-        List<MenuItemInfo> menuItemInfoList = new ArrayList<>();
-        iterate(i -> menuItemInfoList.add(new MenuItemInfo(i.menuItem, i.number)));
-        return menuItemInfoList.iterator();
+        Iterator<MenuItemInfo> menuItemInfoIterator = new Iterator<MenuItemInfo>() {
+            DFSIterator dfsIterator = new DFSIterator();
+
+            @Override
+            public boolean hasNext() {
+                return dfsIterator.hasNext();
+            }
+
+            @Override
+            public MenuItemInfo next() {
+                ItemInfo itemInfo = dfsIterator.next();
+                return new MenuItemInfo(itemInfo.menuItem, itemInfo.number);
+            }
+        };
+        return menuItemInfoIterator;
     }
+
+
 
     private Optional<ItemInfo> findItem(String name) {
         return findByPredicate(itemInfo -> itemInfo.menuItem.getName().equals(name));
